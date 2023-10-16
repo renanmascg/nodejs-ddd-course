@@ -4,7 +4,7 @@ import { Optional } from '@/core/types/optional'
 import dayjs from 'dayjs'
 import { Slug } from './value-objects/slug'
 
-interface QuestionProps {
+export interface QuestionProps {
   authorId: UniqueEntityId
   bestAnswerId?: UniqueEntityId
   title: string
@@ -26,6 +26,10 @@ export class Question extends Entity<QuestionProps> {
   set bestAnswerId(bestAnswerId: UniqueEntityId | undefined) {
     this.props.bestAnswerId = bestAnswerId
     this.touch()
+  }
+
+  get slug() {
+    return this.props.slug
   }
 
   get title() {
